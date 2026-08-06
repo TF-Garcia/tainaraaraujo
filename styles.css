@@ -56,9 +56,10 @@ img {
   margin: 0 auto;
   margin-top: 16px;
   padding: 16px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: rgba(255, 250, 243, 0.56);
   backdrop-filter: blur(18px);
-  width: 100%;
-
 }
 
 .brand {
@@ -131,17 +132,16 @@ footer a:hover {
 
 .mobile-menu nav {
   position: absolute;
-  top: calc(100% + 12px);
-  left: 50%;
+  top: calc(100% + 10px);
+  right: 0;
   display: grid;
-  min-width: 180px;
+  min-width: 210px;
   padding: 0.75rem;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: rgba(255, 253, 249, 0.96);
   color: var(--muted);
   box-shadow: 0 18px 46px rgba(86, 63, 51, 0.16);
-  transform: translateX(-50%);
 }
 
 .mobile-menu nav a {
@@ -206,6 +206,7 @@ footer a:hover {
 footer {
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
+  scroll-margin-top: 110px;
 }
 
 .hero {
@@ -301,7 +302,7 @@ h3 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 8%;
+  object-position: center 18%;
 }
 
 .availability {
@@ -583,17 +584,29 @@ footer p {
 
 @media (max-width: 860px) {
   .site-header {
+    top: 10px;
     grid-template-columns: auto 1fr auto;
-    margin: 0px;
-    width: 100%;
+    width: min(100% - 24px, 1120px);
+    margin-top: 10px;
+    padding: 10px;
+    border-color: var(--line);
+    border-radius: 999px;
+    box-shadow: 0 14px 42px rgba(86, 63, 51, 0.1);
   }
 
-  .brand span:last-child {
+  .brand {
+    min-width: 0;
+  }
+
+  .brand span:last-child,
+  .nav {
     display: none;
   }
 
-  .nav {
-    gap: 0.8rem;
+  .mobile-menu {
+    position: relative;
+    justify-self: end;
+    display: block;
   }
 
   .hero,
@@ -605,7 +618,9 @@ footer p {
 
   .hero {
     min-height: auto;
-    padding-top: 2rem;
+    gap: 2rem;
+    padding-top: 2.25rem;
+    padding-bottom: 3rem;
   }
 
   .profile-card {
@@ -624,23 +639,25 @@ footer p {
     border-radius: 0;
   }
 
-  
+  .sticky-whatsapp {
+    display: inline-flex;
+  }
 }
 
 @media (max-width: 500px) {
   .site-header {
     gap: 0.6rem;
-    padding-inline: 12px;
+    width: min(100% - 20px, 1120px);
+    padding-inline: 10px;
   }
-
-  .nav {
-    gap: 0.55rem;
-  }
-
-
 
   .header-action {
     display: none;
+  }
+
+  .mobile-menu nav {
+    right: -2px;
+    min-width: min(220px, calc(100vw - 32px));
   }
 }
 
@@ -650,21 +667,38 @@ footer p {
   .section,
   .contact,
   footer {
-    width: min(100% - 24px, 1120px);
+    width: min(100% - 28px, 1120px);
+  }
+
+  .brand-mark,
+  .mobile-menu summary {
+    width: 42px;
+    height: 42px;
   }
 
   h1 {
     max-width: 100%;
-    font-size: clamp(2.65rem, 12.6vw, 3.45rem);
+    margin-bottom: 1rem;
+    font-size: clamp(2.45rem, 11.4vw, 3.25rem);
+    line-height: 1.02;
   }
 
   h2 {
     max-width: 100%;
-    font-size: clamp(2.05rem, 10vw, 3rem);
+    font-size: clamp(1.95rem, 8.8vw, 2.75rem);
+    line-height: 1.04;
+  }
+
+  .hero-text,
+  .about-copy,
+  .contact p:not(.eyebrow) {
+    font-size: 1rem;
   }
 
   .hero-actions {
     display: grid;
+    gap: 0.7rem;
+    margin-top: 1.5rem;
   }
 
   .button {
@@ -681,19 +715,63 @@ footer p {
   }
 
   .portrait-ring {
-    width: min(100%, 300px);
+    width: min(100%, 260px);
     border-width: 10px;
   }
 
+  .profile-card h2 {
+    font-size: clamp(1.8rem, 9vw, 2.3rem);
+  }
+
+  .section {
+    padding: 3.5rem 0;
+  }
+
+  .section-heading-2 {
+    gap: 1.25rem;
+  }
+
+  .intro-strip div,
+  .steps li {
+    padding: 1rem;
+  }
+
   .feature-card {
-    min-height: 260px;
+    min-height: auto;
+  }
+
+  .feature-card span {
+    margin-bottom: 2rem;
+    font-size: 2.1rem;
+  }
+
+  .method {
+    gap: 1.5rem;
+    padding: 2.5rem 1rem;
   }
 
   .playlist-card {
-    min-height: 280px;
+    min-height: auto;
+    padding: 1.25rem;
+  }
+
+  .playlist-card span {
+    margin-bottom: 3.25rem;
+  }
+
+  .playlist-card h3 {
+    font-size: clamp(1.55rem, 8vw, 2.2rem);
   }
 
   footer {
     display: grid;
+    gap: 0.5rem;
+    padding-bottom: 5.75rem;
+  }
+
+  .sticky-whatsapp {
+    right: 14px;
+    bottom: 14px;
+    width: calc(100% - 28px);
   }
 }
